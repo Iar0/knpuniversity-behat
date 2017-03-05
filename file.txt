@@ -1,0 +1,141 @@
+[1mFeature:[22m Authentication
+  In order to gain access to the site management area
+  As an admin
+  I need to be able to login and logout
+
+  [1mScenario:[22m Loggin in                      [30m# features/web/authentication.feature:6[39m
+    [32mGiven I am on "[39m[32;1m/[39;22m[32m"[39m                      [30m# Behat\MinkExtension\Context\MinkContext::visit()[39m
+    [32mWhen I follow "[39m[32;1mLogin[39;22m[32m"[39m                  [30m# Behat\MinkExtension\Context\MinkContext::clickLink()[39m
+    [32mAnd I fill in "[39m[32;1mUsername[39;22m[32m" with "[39m[32;1madmin[39;22m[32m"[39m  [30m# Behat\MinkExtension\Context\MinkContext::fillField()[39m
+    [32mAnd I fill in "[39m[32;1mPassword[39;22m[32m" with "[39m[32;1madmin2[39;22m[32m"[39m [30m# Behat\MinkExtension\Context\MinkContext::fillField()[39m
+    [32mAnd print last response[39m                [30m# Behat\MinkExtension\Context\MinkContext::printLastResponse()[39m
+      │ http://0.0.0.0:8000/login
+      │ 
+      │ <!DOCTYPE html>
+      │ <html>
+      │ <head>
+      │     <meta charset="UTF-8" />
+      │     <title>KnpUniversity: The Raptor Store!</title>
+      │ 
+      │             <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+      │         <link rel="stylesheet" href="/css/main.css" />
+      │         <link rel="stylesheet" href="/css/font-awesome.min.css" />
+      │     </head>
+      │ <body>
+      │ 
+      │ 
+      │ <div class="container">
+      │     <div class="header clearfix">
+      │         <nav class="navigation-margin">
+      │             <ul class="nav nav-pills pull-right">
+      │                 <li>
+      │                     <a href="/">Home</a>
+      │                 </li>
+      │                 <li><a href="/admin">Admin</a></li>
+      │                                     <li><a href="/login">Login</a></li>
+      │                                 <li><a href="/_db/rebuild">Reset DB</a></li>
+      │             </ul>
+      │         </nav>
+      │         <h1>The Raptor Store</h1>
+      │     </div>
+      │     <hr>
+      │     <p class="text-center">Fence security <span class="label label-success">activated</span></p>
+      │ 
+      │     <div class="row">
+      │         <div class="col-sm-12">
+      │             
+      │                     <section class="row form-box">
+      │         <div class="col-sm-8 col-sm-offset-2">
+      │             <h1>Login</h1>
+      │ 
+      │             <form action="/admin/login_check" method="POST">
+      │                 <div class="form-group">
+      │                     <label for="inputUsername">Username</label>
+      │                     <input class="form-control" type="text" id="inputUsername" placeholder="Username" name="_username" value="">
+      │                 </div>
+      │                 <div class="form-group">
+      │                     <label for="inputPassword">Password</label>
+      │                     <input class="form-control" type="password" id="inputPassword" name="_password" placeholder="Password">
+      │                 </div>
+      │ 
+      │                 <button type="submit" class="btn btn-primary pull-right" value="Login">Login</button>
+      │             </form>
+      │         </div>
+      │     </section>
+      │         </div>
+      │     </div>
+      │ </div>
+      │ <footer class="footer footer-styling">
+      │     <div class="container">
+      │         <div class="row">
+      │             <div class="col-xs-12 col-sm-6">
+      │                 <h1 class="knpu"><a href="http://knpuniversity.com">KnpUniversity.com</a></h1>
+      │             </div>
+      │             <div class="col-xs-12 col-sm-6">
+      │                 <ul class="nav pull-right footer-nav">
+      │                     <li>
+      │                         <form class="navbar-form" role="search" method="GET" action="/search">
+      │                             <div class="input-group">
+      │                                 <input type="text" class="form-control" placeholder="Search" value="" name="searchTerm">
+      │                                 <div class="input-group-btn">
+      │                                     <button id="search_submit" class="btn btn-default" type="submit">
+      │                                         <i class="fa fa-search"></i>
+      │                                     </button>
+      │                                 </div>
+      │                             </div>
+      │                         </form>
+      │                     </li>
+      │                 </ul>
+      │             </div>
+      │         </div>
+      │     </div>
+      │ </footer>
+      │ 
+      │ <div id="modal-content-holder" class="modal fade">
+      │     <div class="modal-dialog">
+      │         <div class="modal-content">
+      │             <div class="modal-body clearfix"></div>
+      │         </div>
+      │     </div>
+      │ </div>
+      │ 
+      │     <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+      │     <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+      │ 
+      │ <div id="sfwdt33099f" class="sf-toolbar" style="display: none"></div><script>/*<![CDATA[*/    Sfjs = (function() {        "use strict";        var noop = function() {},            collectionToArray = function (collection) {                var length = collection.length || 0,                    results = new Array(length);                while (length--) {                    results[length] = collection[length];                }                return results;            },            profilerStorageKey = 'sf2/profiler/',            request = function(url, onSuccess, onError, payload, options) {                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');                options = options || {};                options.maxTries = options.maxTries || 0;                xhr.open(options.method || 'GET', url, true);                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');                xhr.onreadystatechange = function(state) {                    if (4 !== xhr.readyState) {                        return null;                    }                    if (xhr.status == 404 && options.maxTries > 1) {                        setTimeout(function(){                            options.maxTries--;                            request(url, onSuccess, onError, payload, options);                        }, 500);                        return null;                    }                    if (200 === xhr.status) {                        (onSuccess || noop)(xhr);                    } else {                        (onError || noop)(xhr);                    }                };                xhr.send(payload || '');            },            hasClass = function(el, klass) {                return el.className && el.className.match(new RegExp('\\b' + klass + '\\b'));            },            removeClass = function(el, klass) {                if (el.className) {                    el.className = el.className.replace(new RegExp('\\b' + klass + '\\b'), ' ');                }            },            addClass = function(el, klass) {                if (!hasClass(el, klass)) {                    el.className += " " + klass;                }            },            getPreference = function(name) {                if (!window.localStorage) {                    return null;                }                return localStorage.getItem(profilerStorageKey + name);            },            setPreference = function(name, value) {                if (!window.localStorage) {                    return null;                }                localStorage.setItem(profilerStorageKey + name, value);            },            requestStack = [],            renderAjaxRequests = function() {                var requestCounter = document.querySelectorAll('.sf-toolbar-ajax-requests');                if (!requestCounter.length) {                    return;                }                var tbodies = document.querySelectorAll('.sf-toolbar-ajax-request-list');                var state = 'ok';                if (tbodies.length) {                    var tbody = tbodies[0];                    var rows = document.createDocumentFragment();                    if (requestStack.length) {                        for (var i = 0; i < requestStack.length; i++) {                            var request = requestStack[i];                            var row = document.createElement('tr');                            rows.appendChild(row);                            var methodCell = document.createElement('td');                            if (request.error) {                                methodCell.className = 'sf-ajax-request-error';                            }                            methodCell.textContent = request.method;                            row.appendChild(methodCell);                            var pathCell = document.createElement('td');                            pathCell.className = 'sf-ajax-request-url';                            if ('GET' === request.method) {                                var pathLink = document.createElement('a');                                pathLink.setAttribute('href', request.url);                                pathLink.textContent = request.url;                                pathCell.appendChild(pathLink);                            } else {                                pathCell.textContent = request.url;                            }                            pathCell.setAttribute('title', request.url);                            row.appendChild(pathCell);                            var durationCell = document.createElement('td');                            durationCell.className = 'sf-ajax-request-duration';                            if (request.duration) {                                durationCell.textContent = request.duration + "ms";                            } else {                                durationCell.textContent = '-';                            }                            row.appendChild(durationCell);                            row.appendChild(document.createTextNode(' '));                            var profilerCell = document.createElement('td');                            if (request.profilerUrl) {                                var profilerLink = document.createElement('a');                                profilerLink.setAttribute('href', request.profilerUrl);                                profilerLink.textContent = request.profile;                                profilerCell.appendChild(profilerLink);                            } else {                                profilerCell.textContent = 'n/a';                            }                            row.appendChild(profilerCell);                            var requestState = 'ok';                            if (request.error) {                                requestState = 'error';                                if (state != "loading" && i > requestStack.length - 4) {                                    state = 'error';                                }                            } else if (request.loading) {                                requestState = 'loading';                                state = 'loading';                            }                            row.className = 'sf-ajax-request sf-ajax-request-' + requestState;                        }                        var infoSpan = document.querySelectorAll(".sf-toolbar-ajax-info")[0];                        var children = collectionToArray(tbody.children);                        for (var i = 0; i < children.length; i++) {                            tbody.removeChild(children[i]);                        }                        tbody.appendChild(rows);                        if (infoSpan) {                            var text = requestStack.length + ' call' + (requestStack.length > 1 ? 's' : '');                            infoSpan.textContent = text;                        }                    } else {                        var cell = document.createElement('td');                        cell.setAttribute('colspan', '4');                        cell.textContent = "No AJAX requests yet.";                        var row = document.createElement('tr');                        row.appendChild(cell);                        tbody.appendChild(row);                    }                }                requestCounter[0].textContent = requestStack.length;                var className = 'sf-toolbar-ajax-requests sf-toolbar-status';                if (state == 'ok') {                    className += ' sf-toolbar-status-green';                } else if (state == 'error') {                    className += ' sf-toolbar-status-red';                } else {                    className += ' sf-ajax-request-loading';                }                requestCounter[0].className = className;            };        var addEventListener;        var el = document.createElement('div');        if (!'addEventListener' in el) {            addEventListener = function (element, eventName, callback) {                element.attachEvent('on' + eventName, callback);            };        } else {            addEventListener = function (element, eventName, callback) {                element.addEventListener(eventName, callback, false);            };        }                    if (window.XMLHttpRequest && XMLHttpRequest.prototype.addEventListener) {                var proxied = XMLHttpRequest.prototype.open;                XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {                    var self = this;                    /* prevent logging AJAX calls to static and inline files, like templates */                    var path = url;                    if (url.substr(0, 1) === '/') {                        if (0 === url.indexOf('')) {                            path = url.substr(0);                        }                    }                    else if (0 === url.indexOf('http\x3A\x2F\x2F0.0.0.0\x3A8000')) {                        path = url.substr(19);                    }                    if (path.substr(0, 1) === '/' && !path.match(new RegExp("^\/(app(_[\\w]+)?\\.php\/)?_wdt"))) {                        var stackElement = {                            loading: true,                            error: false,                            url: url,                            method: method,                            start: new Date()                        };                        requestStack.push(stackElement);                        this.addEventListener('readystatechange', function() {                            if (self.readyState == 4) {                                stackElement.duration = new Date() - stackElement.start;                                stackElement.loading = false;                                stackElement.error = self.status < 200 || self.status >= 400;                                stackElement.profile = self.getResponseHeader("X-Debug-Token");                                stackElement.profilerUrl = self.getResponseHeader("X-Debug-Token-Link");                                Sfjs.renderAjaxRequests();                            }                        }, false);                        Sfjs.renderAjaxRequests();                    }                    proxied.apply(this, Array.prototype.slice.call(arguments));                };            }                return {            hasClass: hasClass,            removeClass: removeClass,            addClass: addClass,            getPreference: getPreference,            setPreference: setPreference,            addEventListener: addEventListener,            request: request,            renderAjaxRequests: renderAjaxRequests,            load: function(selector, url, onSuccess, onError, options) {                var el = document.getElementById(selector);                if (el && el.getAttribute('data-sfurl') !== url) {                    request(                        url,                        function(xhr) {                            el.innerHTML = xhr.responseText;                            el.setAttribute('data-sfurl', url);                            removeClass(el, 'loading');                            (onSuccess || noop)(xhr, el);                        },                        function(xhr) { (onError || noop)(xhr, el); },                        '',                        options                    );                }                return this;            },            toggle: function(selector, elOn, elOff) {                var tmp = elOn.style.display,                    el = document.getElementById(selector);                elOn.style.display = elOff.style.display;                elOff.style.display = tmp;                if (el) {                    el.style.display = 'none' === tmp ? 'none' : 'block';                }                return this;            }        }    })();/*]]>*/</script><script>/*<![CDATA[*/    (function () {                Sfjs.load(            'sfwdt33099f',            '/_wdt/33099f',            function(xhr, el) {                el.style.display = -1 !== xhr.responseText.indexOf('sf-toolbarreset') ? 'block' : 'none';                if (el.style.display == 'none') {                    return;                }                if (Sfjs.getPreference('toolbar/displayState') == 'none') {                    document.getElementById('sfToolbarMainContent-33099f').style.display = 'none';                    document.getElementById('sfToolbarClearer-33099f').style.display = 'none';                    document.getElementById('sfMiniToolbar-33099f').style.display = 'block';                } else {                    document.getElementById('sfToolbarMainContent-33099f').style.display = 'block';                    document.getElementById('sfToolbarClearer-33099f').style.display = 'block';                    document.getElementById('sfMiniToolbar-33099f').style.display = 'none';                }                Sfjs.renderAjaxRequests();                /* Handle toolbar-info position */                var toolbarBlocks = document.querySelectorAll('.sf-toolbar-block');                for (var i = 0; i < toolbarBlocks.length; i += 1) {                    toolbarBlocks[i].onmouseover = function () {                        var toolbarInfo = this.querySelectorAll('.sf-toolbar-info')[0];                        var pageWidth = document.body.clientWidth;                        var elementWidth = toolbarInfo.offsetWidth;                        var leftValue = (elementWidth + this.offsetLeft) - pageWidth;                        var rightValue = (elementWidth + (pageWidth - this.offsetLeft)) - pageWidth;                        /* Reset right and left value, useful on window resize */                        toolbarInfo.style.right = '';                        toolbarInfo.style.left = '';                        if (leftValue > 0 && rightValue > 0) {                            toolbarInfo.style.right = (rightValue * -1) + 'px';                        } else if (leftValue < 0) {                            toolbarInfo.style.left = 0;                        } else {                            toolbarInfo.style.right = '-1px';                        }                    };                }            },            function(xhr) {                if (xhr.status !== 0) {                    confirm('An error occurred while loading the web debug toolbar (' + xhr.status + ': ' + xhr.statusText + ').\n\nDo you want to open the profiler?') && (window.location = '/_profiler/33099f');                }            },            {'maxTries': 5}        );    })();/*]]>*/</script>
+      │ </body>
+      │ </html>
+    [31mThen I should see "[39m[31;1mLogout[39;22m[31m"[39m             [30m# Behat\MinkExtension\Context\MinkContext::assertPageContainsText()[39m
+[31m      The text "Logout" was not found anywhere in the text of the current page. (Behat\Mink\Exception\ResponseTextException)[39m
+
+--- [31mFailed scenarios:[39m
+
+    [31mfeatures/web/authentication.feature:6[39m
+
+1 scenario ([31m1 failed[39m)
+6 steps ([32m5 passed[39m, [31m1 failed[39m)
+0m0.39s (12.01Mb)
+[1mFeature:[22m Authentication
+  In order to gain access to the site management area
+  As an admin
+  I need to be able to login and logout
+
+  [1mScenario:[22m Loggin in                      [30m# features/web/authentication.feature:6[39m
+    [32mGiven I am on "[39m[32;1m/[39;22m[32m"[39m                      [30m# Behat\MinkExtension\Context\MinkContext::visit()[39m
+    [32mWhen I follow "[39m[32;1mLogin[39;22m[32m"[39m                  [30m# Behat\MinkExtension\Context\MinkContext::clickLink()[39m
+    [32mAnd I fill in "[39m[32;1mUsername[39;22m[32m" with "[39m[32;1madmin[39;22m[32m"[39m  [30m# Behat\MinkExtension\Context\MinkContext::fillField()[39m
+    [32mAnd I fill in "[39m[32;1mPassword[39;22m[32m" with "[39m[32;1madmin2[39;22m[32m"[39m [30m# Behat\MinkExtension\Context\MinkContext::fillField()[39m
+    [33mAnd |I press "Login"[39m
+    [36mAnd print last response[39m                [30m# Behat\MinkExtension\Context\MinkContext::printLastResponse()[39m
+    [36mThen I should see "[39m[36;1mLogout[39;22m[36m"[39m             [30m# Behat\MinkExtension\Context\MinkContext::assertPageContainsText()[39m
+
+1 scenario ([33m1 undefined[39m)
+7 steps ([32m4 passed[39m, [33m1 undefined[39m, [36m2 skipped[39m)
+0m0.43s (11.89Mb)
+
+ >> [1mdefault[22m[33m suite has undefined steps. Please choose the context to generate snippets:[39m
+
+  [[32m0[39m] None
+  [[32m1[39m] FeatureContext
+  [[32m2[39m] Behat\MinkExtension\Context\MinkContext
+ > c[Kc[Kc[Kc[Kc[Kc[Kc[Kc[K
