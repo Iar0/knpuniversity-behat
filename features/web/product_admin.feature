@@ -17,10 +17,13 @@ Feature: Product admin area
     Then I should not see "Anonymous"
 
   Scenario: Add a new product
-    Given I am on "/admin/products"
+    Given I am logged in as an admin
+    And I am on "/admin/products"
     When I click "New Product"
     And I fill in "Name" with "Veloci-chew toy"
     And I fill in "Price" with "20"
     And I fill in "Description" with "Have your velociraptor chew on this instead!"
     And I press "Save"
     Then I should see "Product created FTW!"
+    And I should see "Veloci-chew toy"
+    And I should not see "Anonymous"

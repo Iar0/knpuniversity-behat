@@ -73,13 +73,24 @@ class FeatureContext extends RawMinkContext implements Context
     /**
      *@BeforeScenario
      */
-    public function clearData()
+    public function resetData()
     {
         $em = $this->getEntityManager();
 
         //$em->createQuery('DELETE FROM AppBundle:User')->execute();
         $purger = new \Doctrine\Common\DataFixtures\Purger\ORMPurger($em);
         $purger->purge();
+    }
+
+    /**
+     * @BeforeScenario @fixtures
+     */
+    public function loadFixtures()
+    {
+        $loader = new \Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader($this->getContainer());
+        $loader->loadFromDirectory(__DIR__ . '/../../src/AppBundle/DataFixtures');
+        $executor = new \Doctrine\Common\DataFixtures\Executor\ORMExecutor($this->getEntityManager());
+        $executor->execute($loader->getFixtures(), true);
     }
 
     /**

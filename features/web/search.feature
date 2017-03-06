@@ -6,6 +6,7 @@ Feature: Search
   Background:
     Given I am on "/"
 
+  @fixtures
   Scenario Outline: Search for a product
 #    When I fill in "searchTerm" with "<term>"
 #    And I press "search_submit"

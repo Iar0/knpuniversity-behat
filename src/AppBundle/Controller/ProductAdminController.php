@@ -23,4 +23,27 @@ class ProductAdminController extends Controller
             'products' => $products
         ]);
     }
+
+    /**
+     * @Route("/admin/products/new", name="product_new")
+     */
+    public function newAction(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $this->addFlash('success', 'Product created FTW!');
+
+            $product = new Product();
+            $product->setName("Veloci-chew toy");
+            $product->setDescription("description");
+            $product->setPrice(20);
+            $product->setAuthor($this->getUser());
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($product);
+            $em->flush();
+
+            return $this->redirectToRoute('product_list');
+        }
+
+        return $this->render('product/new.html.twig');
+    }
 }

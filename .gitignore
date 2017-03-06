@@ -2,4 +2,5 @@
 /app/app.db
 /app/cache
 /web/bundles
-
+/.idea
+app/logs/

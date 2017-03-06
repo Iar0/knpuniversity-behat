@@ -3,6 +3,7 @@ Feature: Authentication
   As an admin
   I need to be able to login and logout
 
+
   Scenario: Loggin in
     Given there is an admin user with name "admin" and password "admin"
     And I am on "/"
