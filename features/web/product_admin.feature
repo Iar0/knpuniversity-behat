@@ -3,6 +3,7 @@ Feature: Product admin area
   As an admin
   I need to be able to add/edit/delete products
 
+  @javascript
   Scenario: List available products
     Given there are 5 products
     And I am logged in as an admin
